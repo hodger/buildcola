@@ -6,7 +6,8 @@ import { NgModule } from '@angular/core';
 
 import { MatTabsModule, MatButtonModule, MatCardModule,
          MatIconModule, MatSelectModule, MatFormFieldModule,
-         MatOptionModule, MatDialogModule, MatStepperModule } from '@angular/material';
+         MatOptionModule, MatDialogModule, MatStepperModule,
+         MatTooltipModule, MatSnackBarModule } from '@angular/material';
 
 // app-level components
 import { AppComponent } from './app.component';
@@ -41,7 +42,9 @@ import { UserDataService } from './services/user-data.service';
     MatFormFieldModule,
     MatOptionModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [ProjectAPIService, UserDataService],
   bootstrap: [AppComponent],

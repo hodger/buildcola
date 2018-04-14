@@ -6,6 +6,7 @@ export class Project {
     tags: string[];
     participantCount: number;
     participants: User[];
+    forkedCount = 0;
     description: string;
     weblink: string;
     imageLink: string;

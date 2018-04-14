@@ -13,6 +13,7 @@ import { Project } from '../models/project.model';
 })
 export class ProjectFeedComponent implements OnInit, OnChanges {
     @Input() tags: string[] = [];
+    @Input() authorEmail: string = null;
     @Output() build: EventEmitter<Project> = new EventEmitter<Project>();
 
     feedProjects: Set<Project>;
@@ -33,7 +34,7 @@ export class ProjectFeedComponent implements OnInit, OnChanges {
     }
 
     initProjects() {
-        this.feedProjects = this.projectAPI.getProjects(this.tags);
+        this.feedProjects = this.projectAPI.getProjects(this.tags, this.authorEmail);
         if (this.tags.length === 0) {
             this.chosenTags = 'all';
         } else {

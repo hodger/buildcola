@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 import { ContactInfoComponent } from './contact-info.component';
 
 import { ProjectAPIService } from '../services/project-api.service';
+import { UserDataService } from '../services/user-data.service';
 
 // models
 import { Project } from '../models/project.model';
@@ -21,8 +22,17 @@ export class ProjectComponent implements OnInit {
 
   @Output() build: EventEmitter<Project> = new EventEmitter<Project>();
 
-  constructor(public dialog: MatDialog, private projectAPI: ProjectAPIService) {}
+  constructor(public dialog: MatDialog, 
+              private projectAPI: ProjectAPIService,
+              private userData: UserDataService,
+              private snackBar: MatSnackBar) {}
   ngOnInit() {}
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ContactInfoComponent, {
@@ -48,5 +58,12 @@ export class ProjectComponent implements OnInit {
 
   requestBuildOff(): void {
     this.build.emit(this.project);
+    this.project.forkedCount++;
+    this.openSnackBar("You're awesome!", "Thanks, I know");
+  }
+
+  join() {
+    this.userData.joinProject(this.project);
+    this.openSnackBar("Added to 'My Projects' tab.", "Great!");
   }
 }

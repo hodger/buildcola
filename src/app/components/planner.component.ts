@@ -15,7 +15,7 @@ export class PlannerComponent {
   newProject: Project = new Project();
 
   constructor(private projectAPI: ProjectAPIService) {}
-    
+
   printAuthor() {
     console.log(this.newAuthor);
   }

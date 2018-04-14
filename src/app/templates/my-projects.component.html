@@ -1,6 +1,17 @@
-<h2>Welcome {{currentUser.username}}</h2>
-<h3>Projects based on yours</h3>
-    
-<h3>Projects you created</h3>
+<h2>Welcome <span style="color: #DF19FF;">{{currentUser.username}}</span></h2>
 
-<h3>Projects you've joined</h3>
+<h3 style="color: #DF19FF">Notifications</h3>
+<hr>
+<ul>
+    <li *ngFor="let note of userData.notifications"><span style="color: #12B283;">{{note}}</span></li>
+</ul>
+
+<h3>Projects you <span style="color: #DF19FF;">created</span></h3>
+<hr>
+<buildcola-feed authorEmail="{{currentUser.email}}"></buildcola-feed>
+
+<h3>Projects you've <span style="color: #DF19FF;">joined</span></h3>
+<hr>
+<div style="width: 700px; margin: auto;">
+    <buildcola-project *ngFor="let proj of userData.userJoinedProjects" [project]='proj'></buildcola-project>
+</div>
