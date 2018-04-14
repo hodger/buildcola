@@ -1,0 +1,6 @@
+<h1>Contact for '{{title}}':</h1>
+<h2>{{contact.name}}</h2>
+<h2>{{contact.email}}</h2>
+<h2 *ngIf="contact.phone !== null">{{contact.phone}}</h2>
+<h2 *ngIf="contact.affiliation !== null">Affilated w/ {{contact.affiliation}}</h2>
+<button mat-button>Email this info</button>

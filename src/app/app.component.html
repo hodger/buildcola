@@ -1,7 +1,13 @@
 <h1><span style="color: darkgray;">Build</span> Columbia</h1>
 <mat-tab-group>
   <mat-tab label="Project feed">
-    <buildcola-feed [tags]="['volunteering']"></buildcola-feed>
+    <mat-form-field class="feed-select">
+      <mat-select placeholder="What are you interested in?" 
+                  [(ngModel)]="chosenTags" multiple="true" name="select">
+        <mat-option *ngFor="let tag of availableTags" [value]="tag">{{tag}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <buildcola-feed [tags]="chosenTags"></buildcola-feed>
   </mat-tab>
   <mat-tab label="Start a project">
     

@@ -1,3 +1,5 @@
-<h2 class="feed-title">Viewing {{chosenTags}} projects</h2>
+<div style="max-width: 700px; margin: auto;">
+    <h2 class="feed-title">Viewing <span style="color: #DF19FF;">{{chosenTags}}</span> projects</h2>
 
-<buildcola-project *ngFor="let proj of feedProjects" [project]="proj"></buildcola-project>
+    <buildcola-project *ngFor="let proj of feedProjects" [project]="proj"></buildcola-project>
+</div>

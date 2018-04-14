@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 
 // models
 import { Project } from '../models/project.model';
+import { Author } from '../models/author.model';
 
 @Injectable()
 export class ProjectAPIService {
+    defaultAuthor: Author = new Author('Ryan Hodge', 'ryanwalterhodge@gmail.com', '5137062868', 'USC');
     projects: Project[] = [
-        new Project('Clean up the river walk', ['volunteering', 'physical'],
-                    'Help us clean up the river!', null),
-        new Project('Lead a free Git workshop', ['code', 'volunteering'],
+        new Project('Clean up the river walk', this.defaultAuthor, ['volunteering', 'physical'],
+                    'Help us clean up the river!', null, 'http://visitcaycewestcolumbia.com/wp-content/uploads/2015/06/ResizeImage-1.jpeg'),
+        new Project('Lead a free Git workshop', this.defaultAuthor, ['code', 'volunteering'],
                     'Help us clean up code!', 'https://github.com')
     ];
 
