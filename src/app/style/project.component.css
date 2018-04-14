@@ -1,0 +1,16 @@
+.project-card {
+    margin: .5em auto .5em auto;
+    max-width: 700px;
+}
+
+.project-card mat-card-title {
+    font-size: 20pt;
+}
+
+.join-button {
+    color: #12B283;
+}
+
+.fork-button {
+    color: #DF19FF;
+}
