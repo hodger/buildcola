@@ -11,12 +11,17 @@ export class Project {
     imageLink: string;
     author: Author;
 
-    constructor(title, author, tags, description, weblink, imageLink = null) {
+    lineage: number[];
+
+    constructor(title='', author=null, tags=[], description='', 
+                weblink = null, imageLink = null,
+                lineage = []) {
         this.title = title;
         this.author = author;
         this.tags = tags;
         this.description = description;
         this.weblink = weblink;
         this.imageLink = imageLink;
+        this.lineage = lineage;
     }
 }

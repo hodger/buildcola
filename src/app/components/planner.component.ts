@@ -1,4 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+
+import {ProjectAPIService} from '../services/project-api.service';
+import { Project } from '../models/project.model';
+import { Author } from '../models/author.model';
 
 @Component({
   selector: 'buildcola-planner',
@@ -6,6 +10,13 @@ import {Component} from '@angular/core';
   styleUrls: ['../style/planner.component.css']
 })
 export class PlannerComponent {
-    constructor() {}
+  @Input() lineageProject: Project;
+  newAuthor: Author = new Author();
+  newProject: Project = new Project();
+
+  constructor(private projectAPI: ProjectAPIService) {}
     
+  printAuthor() {
+    console.log(this.newAuthor);
+  }
 }

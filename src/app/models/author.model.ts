@@ -4,7 +4,7 @@ export class Author {
     phone: string;
     affiliation: string;
 
-    constructor(name, email, phone, affiliation) {
+    constructor(name = '', email = '', phone='', affiliation='') {
         this.name = name;
         this.email = email;
         this.phone = phone;

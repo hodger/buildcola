@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { MatTabsModule, MatButtonModule, MatCardModule,
          MatIconModule, MatSelectModule, MatFormFieldModule,
-         MatOptionModule, MatDialogModule } from '@angular/material';
+         MatOptionModule, MatDialogModule, MatStepperModule } from '@angular/material';
 
 // app-level components
 import { AppComponent } from './app.component';
@@ -14,9 +14,11 @@ import { ProjectComponent } from './components/project.component';
 import { PlannerComponent } from './components/planner.component';
 import { ProjectFeedComponent } from './components/project-feed.component';
 import { ContactInfoComponent } from './components/contact-info.component';
+import { MyProjectsComponent } from './components/my-projects.component';
 
 // app-level services
 import { ProjectAPIService } from './services/project-api.service';
+import { UserDataService } from './services/user-data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ProjectAPIService } from './services/project-api.service';
     ProjectComponent,
     PlannerComponent,
     ProjectFeedComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    MyProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +40,10 @@ import { ProjectAPIService } from './services/project-api.service';
     MatSelectModule,
     MatFormFieldModule,
     MatOptionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
-  providers: [ProjectAPIService],
+  providers: [ProjectAPIService, UserDataService],
   bootstrap: [AppComponent],
   entryComponents: [ContactInfoComponent]
 })

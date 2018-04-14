@@ -6,16 +6,27 @@
     <img *ngIf="project.imageLink !== null" mat-card-image src="{{project.imageLink}}"> 
     <mat-card-content>
         <p>{{project.description}}</p>
+        <ng-container *ngIf="displayLineage">
+            <p>This project builds on:</p>
+            <ul>
+                <li *ngFor="let lin of lineageProjects">
+                    <span style="color: #12B283;">{{lin.title}}</span> by {{lin.author.name}}
+                </li>
+            </ul>
+        </ng-container>
     </mat-card-content>
     <mat-card-actions>
         <button mat-button class="join-button" (click)="openDialog()">
             Join <mat-icon>add</mat-icon>
         </button>
-        <button mat-button class="fork-button">
+        <button mat-button class="fork-button" (click)="requestBuildOff()">
             Build from this <mat-icon>content_copy</mat-icon>
         </button>
         <button mat-button class="fork-button" *ngIf="project.weblink !== null">
             Check it out <mat-icon>public</mat-icon>
+        </button>
+        <button mat-button class="fork-button" *ngIf="project.lineage.length !== 0" (click)="getLineage()">
+            View project linage <mat-icon>query_builder</mat-icon>
         </button>
     </mat-card-actions>
 </mat-card>

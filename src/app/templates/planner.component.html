@@ -1,0 +1,31 @@
+<p>What kinds of projects are right for Build Columbia?</p>
+<p style="color: darkgray">All kinds! We welcome any kind of project that will help the Columbia community. That could be anything from physical work, to software engineering. It's up to you.</p>
+<mat-vertical-stepper linear>
+    <mat-step label="(Optional) Choose a project as your foundation">
+        <mat-form-field>
+            <mat-select placeholder="All projects...">
+                <mat-option *ngFor="let proj of projectAPI.projects" [value]="proj">
+                    {{proj.title}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button matStepperNext>Next</button>
+    </mat-step>
+    <mat-step label="Your information">
+        <input class="planner-input" matInput required [(ngModel)]="newAuthor.name" placeholder="Name">
+        <input class="planner-input" matInput required [(ngModel)]="newAuthor.email" placeholder="Email">
+        <input class="planner-input" matInput [(ngModel)]="newAuthor.phone" placeholder="Phone">
+        <input class="planner-input" matInput [(ngModel)]="newAuthor.affiliation" placeholder="Affiliation(s)">
+        <br/>
+        <button mat-button matStepperNext (click)="printAuthor()">Next</button>
+    </mat-step>
+    <mat-step label="Project information">
+        <input placeholder="Title">
+        <input placeholder="Tags (comma delimited)">
+        <input placeholder="Description">
+        <input placeholder="Web link?">
+        <input placeholder="Image link?">
+    </mat-step>
+    <mat-step label="Tell your friends">
+    </mat-step>
+</mat-vertical-stepper>

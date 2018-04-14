@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 // services
 import { ProjectAPIService } from '../services/project-api.service';
@@ -13,6 +13,7 @@ import { Project } from '../models/project.model';
 })
 export class ProjectFeedComponent implements OnInit, OnChanges {
     @Input() tags: string[] = [];
+    @Output() build: EventEmitter<Project> = new EventEmitter<Project>();
 
     feedProjects: Set<Project>;
     chosenTags = '';
@@ -38,5 +39,9 @@ export class ProjectFeedComponent implements OnInit, OnChanges {
         } else {
             this.chosenTags = this.tags.join(' & ');
         }
+    }
+
+    requestEditorWithLineage(project: Project) {
+        this.build.emit(project);
     }
 }

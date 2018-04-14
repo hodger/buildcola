@@ -12,7 +12,9 @@ export class ProjectAPIService {
         new Project('Clean up the river walk', this.defaultAuthor, ['volunteering', 'physical'],
                     'Help us clean up the river!', null, 'http://visitcaycewestcolumbia.com/wp-content/uploads/2015/06/ResizeImage-1.jpeg'),
         new Project('Lead a free Git workshop', this.defaultAuthor, ['code', 'volunteering'],
-                    'Help us clean up code!', 'https://github.com')
+                    'Help us clean up code!', 'https://github.com'),
+        new Project('Build a canoe launch in Cayce', this.defaultAuthor, ['volunteering', 'physical', 'construction'],
+                    'People should easily be able to canoe in the river.', null, null, [0])
     ];
 
     /**

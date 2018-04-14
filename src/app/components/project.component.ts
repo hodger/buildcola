@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { ContactInfoComponent } from './contact-info.component';
+
+import { ProjectAPIService } from '../services/project-api.service';
 
 // models
 import { Project } from '../models/project.model';
@@ -15,7 +16,12 @@ import { Project } from '../models/project.model';
 export class ProjectComponent implements OnInit {
   @Input() project: Project;
 
-  constructor(public dialog: MatDialog) {}
+  lineageProjects: Project[] = [];
+  displayLineage = false;
+
+  @Output() build: EventEmitter<Project> = new EventEmitter<Project>();
+
+  constructor(public dialog: MatDialog, private projectAPI: ProjectAPIService) {}
   ngOnInit() {}
 
   openDialog(): void {
@@ -31,5 +37,16 @@ export class ProjectComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
     });
+  }
+
+  getLineage(): void {
+    this.project.lineage.map(id => {
+      this.lineageProjects.push(this.projectAPI.projects[id]);
+    });
+    this.displayLineage = true;
+  }
+
+  requestBuildOff(): void {
+    this.build.emit(this.project);
   }
 }

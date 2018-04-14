@@ -1,5 +1,5 @@
 <h1><span style="color: darkgray;">Build</span> Columbia</h1>
-<mat-tab-group>
+<mat-tab-group [(selectedIndex)]="tabIndex">
   <mat-tab label="Project feed">
     <mat-form-field class="feed-select">
       <mat-select placeholder="What are you interested in?" 
@@ -7,10 +7,16 @@
         <mat-option *ngFor="let tag of availableTags" [value]="tag">{{tag}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <buildcola-feed [tags]="chosenTags"></buildcola-feed>
+    <buildcola-feed (build)="goToProjectCreator($event)" [tags]="chosenTags"></buildcola-feed>
   </mat-tab>
   <mat-tab label="Start a project">
-    
+    <buildcola-planner *ngIf="tabIndex === 1" [lineageProject]="focusedProject"></buildcola-planner>
+  </mat-tab>
+  <mat-tab label="My Projects">
+    <buildcola-my-projects *ngIf="tabIndex === 2"></buildcola-my-projects>
+  </mat-tab>
+  <mat-tab label="What is this?">
+    <p>Dunno</p>
   </mat-tab>
 </mat-tab-group>
 
